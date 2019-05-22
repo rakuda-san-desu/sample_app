@@ -23,5 +23,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success  #レスポンスが成功するはず
     assert_select "title", "About | #{@base_title}"  #以下のHTMLが存在するはず
   end
+  
+  test "should get contact" do
+    get static_pages_contact_url
+    assert_response :success
+    assert_select "title", "Contact | #{@base_title}"
+  end
 
 end
