@@ -14,7 +14,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
 
   test "should get help" do
-    get helf_path  #static_pages/helpにアクセスしたら
+    get help_path  #static_pages/helpにアクセスしたら
     assert_response :success  #レスポンスが成功するはず
     assert_select "title", "Help | #{@base_title}"  #以下のHTMLが存在するはず
   end
