@@ -1,0 +1,4 @@
+ja:
+  shared:
+    error_messages:
+      errors count: 'フォームに%{errors_count}個のエラーがあります'

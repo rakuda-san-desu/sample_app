@@ -1,0 +1,11 @@
+ja:  
+  static_pages:
+      home:
+        Welcome_to_the_Sample_App: 'サンプルアプリへようこそ！'
+        welcome_message_html: 'これは<a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>のサンプルアプリです'
+      about:
+        about_tutorial_html: '<a href="https://railstutorial.jp/">Ruby on Rails チュートリgit logアル</a>は、Ruby on Railsでウェブ開発を指導する<a href="https://railstutorial.jp/#ebook">電子資料</a>と<a href="https://railstutorial.jp/#screencast">解説動画</a>です。'
+      help:
+        help_html: 'Ruby on Railsチュートリアルのヘルプは<a href="https://railstutorial.jp/help">Rails Tutorialのヘルプページ</a>を参照して下さい。このサンプルアプリへのヘルプについては<a href="https://railstutorial.jp/#ebook"><em>Ruby on Rails Tutorial</em>の電子資料</a>を参照してください'
+      contact:
+        contact_html: 'サンプルアプリについては<a href="https://railstutorial.jp/contact">連絡ページ</a>からRuby on Railsチュートリアルにお問い合わせ下さい'
