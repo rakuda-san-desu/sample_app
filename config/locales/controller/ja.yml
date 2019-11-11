@@ -1,0 +1,4 @@
+ja:
+  users:
+    create:
+      welcome_message: 'サンプルアプリへようこそ！'
