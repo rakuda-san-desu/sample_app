@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      
+      flash[:success] = t('.welcome_message')
+      redirect_to @user
     else
-      #newアクションに対応したviewが返る
       render 'new'
     end
   end
