@@ -1,0 +1,6 @@
+ja:
+  sessions:
+    new:
+      login: 'ログインする'
+      new_user?: '未登録の方はこちらから→'
+      signup: '新規登録'
