@@ -1,0 +1,9 @@
+ja:
+  layouts:
+    header:
+      Users: 'ユーザー一覧'
+      Account: 'アカウント'
+      Profile: 'プロフィール'
+      Settings: 'セッティング'
+      Log_out: 'ログアウト'
+      Log_in: 'ログイン'
