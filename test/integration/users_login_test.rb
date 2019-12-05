@@ -25,14 +25,22 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   end
   
   test "login with valid information" do
+    #login_pathにgetのリクエスト
     get login_path
+    #login_pathにposuのリクエスト　内容→params: { session: { email: @user.email, password: 'password' } }
     post login_path, params: { session: { email:    @user.email,
                                           password: 'password' } }
+    #ユーザー詳細画面にリダイレクトされる
     assert_redirected_to @user
+    #実際にリダイレクト先に移動
     follow_redirect!
+    #sers/showが描写される
     assert_template 'users/show'
+    #login_pathへのリンクが0である
     assert_select "a[href=?]", login_path, count: 0
+    #logout_pathへのリンクがある
     assert_select "a[href=?]", logout_path
+    #user_path(@user)へのリンクがある
     assert_select "a[href=?]", user_path(@user)
   end
 end
