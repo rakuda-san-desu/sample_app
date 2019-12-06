@@ -2,3 +2,7 @@ ja:
   users:
     create:
       welcome_message: 'サンプルアプリへようこそ！'
+  
+  sessions:
+    create:
+      login_error: 'メールアドレスが無効　または　パスワードが間違っています'
