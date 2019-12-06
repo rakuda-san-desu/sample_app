@@ -17,5 +17,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    #ログアウトする（sessions_helperのlog_outメソッド）
+    log_out
+    #ルートURLにリダイレクト
+    redirect_to root_url
   end
 end
