@@ -30,5 +30,4 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     #テストユーザーがログインしている
     assert is_logged_in?
   end
-  
 end
