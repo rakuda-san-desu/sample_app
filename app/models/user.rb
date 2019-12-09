@@ -29,7 +29,7 @@ class User < ApplicationRecord
   def remember
     #クラス変数remember_tokenに　User.new_tokenを代入
     self.remember_token = User.new_token
-    #validationを無視して更新　（:remember_digest属性にハッシュ化したremember_tokenを値とする）
+    #validationを無視して更新　（:remember_digest属性にハッシュ化したremember_tokenを値としてセット）
     update_attribute(:remember_digest, User.digest(remember_token))
   end
   
