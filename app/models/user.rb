@@ -29,7 +29,12 @@ class User < ApplicationRecord
   def remember
     #クラス変数remember_tokenに　User.new_tokenを代入
     self.remember_token = User.new_token
-    #validationを無視して更新　（:remember_digest属性にハッシュ化したremember_tokenを）
+    #validationを無視して更新　（:remember_digest属性にハッシュ化したremember_tokenを値とする）
     update_attribute(:remember_digest, User.digest(remember_token))
+  end
+  
+  # 渡されたトークンがダイジェストと一致したらtrueを返す
+  def authenticated?(remember_token)
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 end
