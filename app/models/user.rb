@@ -40,7 +40,7 @@ class User < ApplicationRecord
   
   # ユーザーのログイン情報を破棄する
   def forget
-    ##validationを無視して更新（:remember_digestの値をnilに）
+    #validationを無視して更新（:remember_digestの値をnilに）
     update_attribute(:remember_digest, nil)
   end
 end
