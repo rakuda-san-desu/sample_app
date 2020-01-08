@@ -4,3 +4,4 @@ ja:
       login: 'ログインする'
       new_user?: '未登録の方はこちらから→'
       signup: '新規登録'
+      remember_me-checkbox: 'ログイン情報を保存する'
