@@ -50,6 +50,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     #ルートURLへリダイレクト
     assert_redirected_to root_url
+    # 2番目のウィンドウでログアウトをクリックするユーザーをシミュレートする
+    delete logout_path
     #実際にリダイレクト先に移動
     follow_redirect!
     #login_pathへのリンクがある
