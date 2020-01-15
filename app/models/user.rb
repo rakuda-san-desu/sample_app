@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  #:remember_token属性をUserクラスに定義
+  #仮想の属性:remember_tokenをUserクラスに定義
   attr_accessor :remember_token
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
