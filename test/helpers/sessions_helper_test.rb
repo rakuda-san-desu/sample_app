@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class SessionsHelperTest < ActionView::TestCase
-  #リスト1.2、fixtureでuser変数を定義してrememberメソッドで記憶
+  #fixtureでuser変数を定義してrememberメソッドで記憶
   def setup
     @user = users(:michael)
     remember(@user)
   end
   
-  #リスト3、current_userが、渡されたユーザーと同じであるか確認
+  #current_userが、渡されたユーザーと同じであるか確認
   test "current_user returns right user when session is nil" do
     # @userとcurrent_userが等しければtrue
     assert_equal @user, current_user
