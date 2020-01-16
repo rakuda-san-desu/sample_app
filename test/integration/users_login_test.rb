@@ -63,13 +63,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user), count: 0
   end
   
+  #チェックボックスオン時のテスト
   test "login with remembering" do
     #cookieを保存してログイン
     log_in_as(@user, remember_me: '1')
-    #cookies['remember_token']はempty?ではない
-    assert_not_empty cookies['remember_token']
+    #cookiesのremember_tokenと@userのremember_tokenが等しいときにtrue
+    assert_equal cookies['remember_token'], assigns(:user).remember_token
   end
 
+  #チェックボックスオフ時のテスト
   test "login without remembering" do
     # クッキーを保存してログイン
     log_in_as(@user, remember_me: '1')
