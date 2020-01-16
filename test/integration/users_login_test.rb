@@ -50,6 +50,9 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     #ルートURLへリダイレクト
     assert_redirected_to root_url
+    #2番目のウィンドウでログアウトをクリックするユーザーをシミュレートする
+    #logout_pathへdeleteのリクエスト（2度目）
+    delete logout_path
     #実際にリダイレクト先に移動
     follow_redirect!
     #login_pathへのリンクがある
@@ -58,5 +61,25 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", logout_path,      count: 0
     #user_path(@user)へのリンクが0である
     assert_select "a[href=?]", user_path(@user), count: 0
+  end
+  
+  #チェックボックスオン時のテスト
+  test "login with remembering" do
+    #cookieを保存してログイン
+    log_in_as(@user, remember_me: '1')
+    #cookiesのremember_tokenと@userのremember_tokenが等しいときにtrue
+    assert_equal cookies['remember_token'], assigns(:user).remember_token
+  end
+
+  #チェックボックスオフ時のテスト
+  test "login without remembering" do
+    # クッキーを保存してログイン
+    log_in_as(@user, remember_me: '1')
+    #logout_pathへdeleteのリクエスト
+    delete logout_path
+    # クッキーを削除してログイン
+    log_in_as(@user, remember_me: '0')
+    #cookies['remember_token']はempty?である
+    assert_empty cookies['remember_token']
   end
 end
