@@ -1,4 +1,8 @@
 ja:
   users:
     new:
-      Create my account: 'アカウントを作る！'
+      create_my_account: 'アカウントを作る！'
+    edit:
+      update_your_profile: 'プロフィールの更新'
+      save_changes: '更新する'
+      change_image: '画像を変更'
