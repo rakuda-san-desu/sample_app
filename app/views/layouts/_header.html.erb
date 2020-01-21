@@ -18,12 +18,11 @@
               <!--自分のプロフィールページへのリンク-->
               <li><%= link_to t('.Profile'), current_user %></li>
               <!--ユーザー設定-->
-               <li><%= link_to t('.Settings'), edit_user_path(current_user) %></li>
+              <li><%= link_to t('.Settings'), edit_user_path(current_user) %></li>
+              <!--ラインをつけてるやつ-->
               <li class="divider"></li>
-              <li>
-                <!--ログアウト-->
-                <%= link_to t('.Log_out'), logout_path, method: :delete %>
-              </li>
+              <!--ログアウト-->
+              <li><%= link_to t('.Log_out'), logout_path, method: :delete %></li>
             </ul>
           </li>
         <!--ログインしていない場合-->
