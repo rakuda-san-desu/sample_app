@@ -17,8 +17,8 @@
             <ul class="dropdown-menu">
               <!--自分のプロフィールページへのリンク-->
               <li><%= link_to t('.Profile'), current_user %></li>
-              <!--10章で実装-->
-              <li><%= link_to t('.Settings'), '#' %></li>
+              <!--ユーザー設定-->
+               <li><%= link_to t('.Settings'), edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li>
                 <!--ログアウト-->
