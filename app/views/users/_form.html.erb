@@ -14,6 +14,6 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-  #yieldメソッドで個別に設定したボタン名を渡す
+  <!--yieldメソッドで個別に設定したボタン名を渡す-->
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
