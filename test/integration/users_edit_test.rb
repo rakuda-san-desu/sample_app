@@ -16,8 +16,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               email: "foo@invalid",
                                               password:              "foo",
                                               password_confirmation: "bar" } }
-
     # users/editが描写される
     assert_template 'users/edit'
+    #特定のHTMLタグが存在する　class="alert"のdiv,　フォームに4個のエラーがあります
+    assert_select "div.alert", "フォームに4個のエラーがあります"
   end
 end
