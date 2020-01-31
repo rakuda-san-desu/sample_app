@@ -2,6 +2,8 @@ ja:
   users:
     create:
       welcome_message: 'サンプルアプリへようこそ！'
+    update:
+      profile_updated: 'プロフィールが更新されました！'
   
   sessions:
     create:

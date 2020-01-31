@@ -29,7 +29,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #指定された属性の検証がすべて成功した場合@userの更新と保存を続けて同時に行う
     if @user.update_attributes(user_params)
-      # 更新に成功した場合の処理が入る。
+      # 更新成功のフラッシュメッセージ
+      flash[:success] = t('.profile_updated')
+      # @user（プロフィールページ）へリダイレクト
+      redirect_to @user
     else
       render 'edit'
     end
