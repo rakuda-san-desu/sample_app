@@ -7,6 +7,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful edit" do
+    # test userとしてログイン
+    log_in_as(@user)
     # edit_user_path(@user)にgetのリクエスト
     get edit_user_path(@user)
     # users/editが描写される
@@ -23,6 +25,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
   
   test "successful edit" do
+    # test userとしてログイン
+    log_in_as(@user)
     # edit_user_path(@user)にgetのリクエスト
     get edit_user_path(@user)
     # users/editが描写される
