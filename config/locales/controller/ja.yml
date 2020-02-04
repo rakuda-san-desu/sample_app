@@ -1,5 +1,6 @@
 ja:
   users:
+    please_log_in: 'ログインしてください'
     create:
       welcome_message: 'サンプルアプリへようこそ！'
     update:
