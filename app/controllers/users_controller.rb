@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # 直前にlogged_in_userメソッドを実行　edit,updateアクションにのみ適用
-  before_action :logged_in_user
+  before_action :logged_in_user, only: [:edit, :update]
   
   def show
     @user = User.find(params[:id])
