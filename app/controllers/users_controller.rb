@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     def logged_in_user
       # logged_in?がfalseの場合
       unless logged_in?
-        # flashｓでエラーメッセージを表示
+        # flashsでエラーメッセージを表示
         flash[:danger] = "Please log in."
         # login_urlにリダイレクト
         redirect_to login_url
