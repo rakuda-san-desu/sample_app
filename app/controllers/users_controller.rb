@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   # 直前にlogged_in_userメソッドを実行　edit,updateアクションにのみ適用
   before_action :logged_in_user, only: [:edit, :update]
+  # 直前にcorrect_userメソッドを実行　edit,updateアクションにのみ適用
+  before_action :correct_user,   only: [:edit, :update]
   
   def show
     @user = User.find(params[:id])
@@ -24,11 +26,13 @@ class UsersController < ApplicationController
   
   #ユーザーのeditアクション
   def edit
-    @user = User.find(params[:id])
+    # 直前に実行されるcorrect_userメソッドで定義されているため下記代入文は削除
+    # @user = User.find(params[:id])
   end
   
   def update
-    @user = User.find(params[:id])
+    # 直前に実行されるcorrect_userメソッドで定義されているため下記代入文は削除
+    # @user = User.find(params[:id])
     #指定された属性の検証がすべて成功した場合@userの更新と保存を続けて同時に行う
     if @user.update_attributes(user_params)
       # 更新成功のフラッシュメッセージ
@@ -59,5 +63,12 @@ class UsersController < ApplicationController
         # login_urlにリダイレクト
         redirect_to login_url
       end
+    end
+    
+    # 正しいユーザーかどうか確認
+    def correct_user
+      @user = User.find(params[:id])
+      # root_urlにリダイレクト　以下の比較演算式がfalseの場合　@userとcurrent_userが等しい
+      redirect_to(root_url) unless @user == current_user
     end
 end
