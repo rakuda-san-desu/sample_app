@@ -39,7 +39,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get edit_user_path(@user)
     # フラッシュがemptyである
     assert flash.empty?
-    root_urlにリダイレクトされる
+    # root_urlにリダイレクトされる
     assert_redirected_to root_url
   end
 
@@ -51,7 +51,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                               email: @user.email } }
     # フラッシュがemptyである
     assert flash.empty?
-    root_urlにリダイレクトされる
+    # root_urlにリダイレクトされる
     assert_redirected_to root_url
   end
 
