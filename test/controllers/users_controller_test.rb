@@ -5,6 +5,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # テストユーザーを設定
   def setup
     @user = users(:michael)
+    @other_user = users(:archer)
   end
   
   test "should get new" do
@@ -29,6 +30,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     # login_urlにリダイレクトされる
     assert_redirected_to login_url
+  end
+  
+  test "should redirect edit when logged in as wrong user" do
+    # @other_userとしてログインする
+    log_in_as(@other_user)
+    # @userのユーザー情報編集ページにgetのリクエスト
+    get edit_user_path(@user)
+    # フラッシュがemptyである
+    assert flash.empty?
+    root_urlにリダイレクトされる
+    assert_redirected_to root_url
+  end
+
+  test "should redirect update when logged in as wrong user" do
+    # @other_userとしてログインする
+    log_in_as(@other_user)
+    # @userのupdateアクションにparamsハッシュのデータを持たせてPATCHのリクエスト　　
+    patch user_path(@user), params: { user: { name: @user.name,
+                                              email: @user.email } }
+    # フラッシュがemptyである
+    assert flash.empty?
+    root_urlにリダイレクトされる
+    assert_redirected_to root_url
   end
 
 end
