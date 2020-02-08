@@ -7,7 +7,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful edit" do
-    # test userとしてログイン
+    # @userとしてログイン
     log_in_as(@user)
     # edit_user_path(@user)にgetのリクエスト
     get edit_user_path(@user)
@@ -24,13 +24,16 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_select "div.alert", "フォームに4個のエラーがあります"
   end
   
-  test "successful edit" do
-    # test userとしてログイン
-    log_in_as(@user)
+  # successful editのテストを編集していく
+  test "successful edit with friendly forwarding" do
     # edit_user_path(@user)にgetのリクエスト
     get edit_user_path(@user)
-    # users/editが描写される
-    assert_template 'users/edit'
+    # @userとしてログイン
+    log_in_as(@user)
+    # edit用のテンプレートはリダイレクトで描画されるので下記一文は削除
+    # assert_template 'users/edit'
+    # @userのユーザー編集ページにリダイレクトされる
+    assert_redirected_to edit_user_url(@user)
     # nameに"Foo Bar"を代入
     name  = "Foo Bar"
     # emailに"foo@bar.com"を代入
