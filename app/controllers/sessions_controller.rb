@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       log_in @user
       #params[:session][:remember_me]が1の時@userを記憶　そうでなければuserを忘れる
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      #
+      #SessionsHelperで定義したredirect_back_orメソッドを呼び出してリダイレクト先を定義
+      # 本文ではデフォルト値が「user」になってるけど「@user」が正解
       redirect_back_or @user
     else
       flash.now[:danger] = t('.login_error')
