@@ -28,10 +28,14 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   test "successful edit with friendly forwarding" do
     # edit_user_path(@user)にgetのリクエスト
     get edit_user_path(@user)
+    # session[:forwarding_url]とedit_user_url(@user)が等しい時にtrue
+    assert_equal session[:forwarding_url], edit_user_url(@user)
     # @userとしてログイン
     log_in_as(@user)
     # edit用のテンプレートはリダイレクトで描画されるので下記一文は削除
     # assert_template 'users/edit'
+    # session[:forwarding_url]がnilの時true
+    assert_nil session[:forwarding_url]
     # @userのユーザー編集ページにリダイレクトされる
     assert_redirected_to edit_user_url(@user)
     # nameに"Foo Bar"を代入
