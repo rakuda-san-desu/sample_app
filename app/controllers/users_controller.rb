@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   
   def index
+    #インスタンス変数@usersにすべてのuserを代入（後で修正あり）
+    @users = User.all
   end
   
   def show
