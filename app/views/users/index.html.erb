@@ -1,6 +1,8 @@
 <% provide(:title, t('.all_users')) %>
 <h1><%= t('.all_users') %></h1>
 
+<%= will_paginate %>
+
 <ul class="users">
   <!--eachメソッドでユーザー情報を1個づつ取り出す-->
   <% @users.each do |user| %>
@@ -12,3 +14,5 @@
     </li>
   <% end %>
 </ul>
+
+<%= will_paginate %>
