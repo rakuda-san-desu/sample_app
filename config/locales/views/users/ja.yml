@@ -1,5 +1,7 @@
 ja:
   users:
+    index:
+      all_users: 'ユーザー一覧'
     new:
       create_my_account: 'アカウントを作る！'
     edit:
