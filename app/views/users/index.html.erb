@@ -6,12 +6,7 @@
 <ul class="users">
   <!--eachメソッドでユーザー情報を1個づつ取り出す-->
   <% @users.each do |user| %>
-    <li>
-      <!--gravatar_forヘルパーメソッド　ユーザーのgravatar登録画像を表示　サイズ指定-->
-      <%= gravatar_for user, size: 50 %>
-      <!--link_toメソッド　ユーザー名を表示　ユーザー詳細ページにリンク-->
-      <%= link_to user.name, user %>
-    </li>
+    <%= render @users %>
   <% end %>
 </ul>
 
