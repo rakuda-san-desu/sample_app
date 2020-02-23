@@ -1,8 +1,10 @@
-# テーブル名.create!　作るデータ対応するカラムと値
+# テーブル名.create!　作るデータ→対応するカラムと値
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar",
+            # 管理者
+             admin: true)
 
 # 99回繰り返す（timesメソッド）
 99.times do |n|
