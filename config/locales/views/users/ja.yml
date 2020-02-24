@@ -8,3 +8,6 @@ ja:
       update_your_profile: 'プロフィールの更新'
       save_changes: '更新する'
       change_image: '画像を変更'
+    user:
+      delete: '削除'
+      confirmation: 'このユーザーを削除しますか？'
