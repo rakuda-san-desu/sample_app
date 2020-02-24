@@ -39,6 +39,20 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
   
+  test "should not allow the admin attribute to be edited via the web" do
+    #@other_userとしてログイン（(test_helper.rbで定義したlog_in_asヘルパー)
+    log_in_as(@other_user)
+    #@other_userのadmin?はtrueではない
+    assert_not @other_user.admin?
+    #user_path(@other_user)にpatchのリクエスト　→持たせるハッシュ
+    patch user_path(@other_user), params: {
+                                    user: { password:              'password',
+                                            password_confirmation: 'password',
+                                            admin: true } }
+    #DBから再度取得した@other_userのadmin?はtrueではない
+    assert_not @other_user.reload.admin?
+  end
+  
   test "should redirect edit when logged in as wrong user" do
     # @other_userとしてログインする
     log_in_as(@other_user)
