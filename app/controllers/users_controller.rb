@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # 直前にlogged_in_userメソッドを実行　index,edit,updateアクションにのみ適用
-  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   # 直前にcorrect_userメソッドを実行　edit,updateアクションにのみ適用
   before_action :correct_user,   only: [:edit, :update]
   
@@ -51,6 +51,15 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    # 受け取ったidのUserを削除
+    User.find(params[:id]).destroy
+    # 削除成功のフラッシュメッセージ
+    flash[:success] = t('.user_deleted')
+    # ユーザー一覧ページへリダイレクト
+    redirect_to users_url
+  end
+  
   # 外部に公開されないメソッド
   private
 
@@ -79,5 +88,11 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       # root_urlにリダイレクト　current_user?メソッドがfalseの場合
       redirect_to(root_url) unless current_user?(@user)
+    end
+    
+    # 管理者かどうか確認
+    def admin_user
+      # root_urlにリダイレクト current_user.admin?(ログイン中のユーザーが管理者であるか)がfalseの場合
+      redirect_to(root_url) unless current_user.admin?
     end
 end

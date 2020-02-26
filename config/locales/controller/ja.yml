@@ -5,6 +5,8 @@ ja:
       welcome_message: 'サンプルアプリへようこそ！'
     update:
       profile_updated: 'プロフィールが更新されました！'
+    destroy:
+      user_deleted: 'ユーザーが削除されました'
   
   sessions:
     create:
