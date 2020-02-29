@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   # 直前にcorrect_userメソッドを実行　edit,updateアクションにのみ適用
   before_action :correct_user,   only: [:edit, :update]
+  # 直前にadmin_userメソッドを実行　destroyアクションのみに適用
+  before_action :admin_user,     only: :destroy
   
   def index
     #インスタンス変数@usersにすべてのuserを代入してたけどページネーション機能を実装するため変更
