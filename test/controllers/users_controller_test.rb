@@ -75,5 +75,27 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     # root_urlにリダイレクトされる
     assert_redirected_to root_url
   end
+  
+  test "should redirect destroy when not logged in" do
+    # ブロックで渡されたものを呼び出す前後でUser.countに違いがない
+    assert_no_difference 'User.count' do
+      # user_path(@user)にdeleteのリクエスト
+      delete user_path(@user)
+    end
+    # login_urlにリダイレクトされる
+    assert_redirected_to login_url
+  end
+
+  test "should redirect destroy when logged in as a non-admin" do
+    # other_userでログインする
+    log_in_as(@other_user)
+    # ブロックで渡されたものを呼び出す前後でUser.countに違いがない
+    assert_no_difference 'User.count' do
+      # user_path(@user)にdeleteのリクエスト
+      delete user_path(@user)
+    end
+    # root_urlにリダイレクト
+    assert_redirected_to root_url
+  end
 
 end
