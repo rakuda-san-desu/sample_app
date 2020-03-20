@@ -1,0 +1,7 @@
+ja:
+  user_mailer:
+    hi: 'こんにちは！%{user_name}さん'
+    welcome_message: 'サンプルアプリへようこそ！アカウントを有効にするには、下記へアクセスしてください'
+    
+    account_activation:
+      activate: 'ここからアクセス'
