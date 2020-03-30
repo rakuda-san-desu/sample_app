@@ -24,10 +24,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #sessions　helperで定義したlog_inメソッド
-      log_in @user
-      flash[:success] = t('.welcome_message')
-      redirect_to @user
+      #UserMailerの引数に@userwp定義したaccount_activationメソッドで今すぐメールを送信
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = t('.check_your_email')
+      redirect_to root_url
     else
       render 'new'
     end

@@ -2,6 +2,7 @@ ja:
   users:
     please_log_in: 'ログインしてください'
     create:
+      check_your_email: 'メールを確認してアカウントを有効にしてください。'
       welcome_message: 'サンプルアプリへようこそ！'
     update:
       profile_updated: 'プロフィールが更新されました！'
