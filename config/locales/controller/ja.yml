@@ -11,7 +11,9 @@ ja:
   
   sessions:
     create:
-      login_error: 'メールアドレスが無効　または　パスワードが間違っています'
+      account_not_activated: 'アカウントが有効化されていません　'
+      check_your_email: 'メールを確認してアカウントを有効にしてください。'
+      invalid_combination: 'メール・パスワードの組み合わせが無効です'
       
   account_activations:
     edit:
