@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersSignupTest < ActionDispatch::IntegrationTest
   
   def setup
-    #ActionMailer::Base.deliveriesに格納されたメールをクリア
+    #配列deliveriesに格納されたメールをクリア
     ActionMailer::Base.deliveries.clear
   end
 
