@@ -5,10 +5,8 @@ class AccountActivationsController < ApplicationController
     user = User.find_by(email: params[:email])
     # userが存在する　かつ　userがactivatedではない　かつ　有効化トークンとparams[:id](activation_token)が持つ有効化ダイジェストが一致した場合
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
-      # userのactivatedの値をtrueに
-      user.update_attribute(:activated,    true)
-      # useractivated_atの値を現在時刻に
-      user.update_attribute(:activated_at, Time.zone.now)
+      # userで定義したactivateメソッドを呼び出してユーザーを有効化
+      user.activate
       # userでログイン（Sessionsヘルパーのlog_inメソッドを呼び出し）
       log_in user
       #flashメッセージを表示

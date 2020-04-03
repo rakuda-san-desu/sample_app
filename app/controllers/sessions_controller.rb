@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       # userが有効であれば
-      if user.activated?
+      if @user.activated?
         #session[:user_id] = @user　と言う事
         log_in @user
         # params[:session][:remember_me]が1の時@userを記憶　そうでなければuserを忘れる
