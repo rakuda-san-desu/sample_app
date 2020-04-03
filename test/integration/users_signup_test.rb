@@ -37,21 +37,21 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     # userが有効ではない
     assert_not user.activated?
     # 有効化していない状態でログインしてみる
-    log_in_as(user)
+    log_in_as(@user)
     # テストユーザーがログインしていない
     assert_not is_logged_in?
     # 有効化トークンが不正な場合
-    get edit_account_activation_path("invalid token", email: user.email)
+    get edit_account_activation_path("invalid token", email: @user.email)
     # テストユーザーがログインしていない
     assert_not is_logged_in?
     # トークンは正しいがメールアドレスが無効な場合
-    get edit_account_activation_path(user.activation_token, email: 'wrong')
+    get edit_account_activation_path(@user.activation_token, email: 'wrong')
     # テストユーザーがログインしていない
     assert_not is_logged_in?
     # 有効化トークンが正しい場合
-    get edit_account_activation_path(user.activation_token, email: user.email)
+    get edit_account_activation_path(@user.activation_token, email: @user.email)
     # userの値を再取得すると有効化している
-    assert user.reload.activated?
+    assert @user.reload.activated?
     # 実際にリダイレクト先に移動
     follow_redirect!
     #sers/showが描写される
