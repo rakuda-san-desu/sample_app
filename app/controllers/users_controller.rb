@@ -9,13 +9,16 @@ class UsersController < ApplicationController
   def index
     # インスタンス変数@usersに以下を代入
     # Userテーブルからactivated:がtrueのデータをすべて取り出してpaginate(page: params[:page])する
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])  #インスタンス変数@usersにすべてのuserを代入してたけどページネーション機能を実装するため変更
+    # @users = User.all
+    # インスタンス変数@usersにUser.paginate(page: params[:page])を代入
+    @users = User.paginate(page: params[:page])
   end
   
   def show
     # @userにUserテーブルから(params[:id])のデータを取り出して代入
     @user = User.find(params[:id])
-    #root_urlにリダイレクト　以下がtrueの場合（審議値を返すreturn）　@userが有効ではない
+    #root_urlにリダイレクト　trueの場合ここで処理が終了する→　@userが有効ではない場合
     #false(@userが有効）な場合はリダイレクトは実行されない
     redirect_to root_url and return unless @user.activated?
   end

@@ -11,11 +11,11 @@ ja:
   
   sessions:
     create:
-      account_not_activated: 'アカウントが有効化されていません　'
-      check_your_email: 'メールを確認してアカウントを有効にしてください。'
-      invalid_combination: 'メール・パスワードの組み合わせが無効です'
+      login_error: 'メールアドレスが無効　または　パスワードが間違っています'
+      account_not_activated: 'アカウントが有効になっていません '
+      check_your_email: 'メール本文のリンクを確認してください'
       
   account_activations:
     edit:
       account_activation_successful: 'アカウントが有効になりました！'
-      invalid_activation_link: 'リンクが無効です'
+      invalid_activation_link: '有効化のアドレスが無効です'
