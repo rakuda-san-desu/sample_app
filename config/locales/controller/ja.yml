@@ -12,6 +12,8 @@ ja:
   sessions:
     create:
       login_error: 'メールアドレスが無効　または　パスワードが間違っています'
+      account_not_activated: 'アカウントが有効になっていません '
+      check_your_email: 'メール本文のリンクを確認してください'
       
   account_activations:
     edit:
