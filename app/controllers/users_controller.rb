@@ -7,14 +7,17 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   
   def index
-    #インスタンス変数@usersにすべてのuserを代入してたけどページネーション機能を実装するため変更
-    # @users = User.all
-    # インスタンス変数@usersにUser.paginate(page: params[:page])を代入
-    @users = User.paginate(page: params[:page])
+    # インスタンス変数@usersに以下を代入
+    # Userテーブルからactivated:がtrueのデータをすべて取り出してpaginate(page: params[:page])する
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
   
   def show
+    # @userにUserテーブルから(params[:id])のデータを取り出して代入
     @user = User.find(params[:id])
+    #root_urlにリダイレクト　以下がtrueの場合（審議値を返すreturn）　@userが有効ではない
+    #false(@userが有効）な場合はリダイレクトは実行されない
+    redirect_to root_url and return unless @user.activated?
   end
   
   def new
@@ -24,8 +27,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #UserMailerの引数に@userwp定義したaccount_activationメソッドで今すぐメールを送信
-      UserMailer.account_activation(@user).deliver_now
+      # userモデルで定義したメソッド（send_activation_email）を呼び出して有効化メールを送信
+      @user.send_activation_email
       flash[:info] = t('.check_your_email')
       redirect_to root_url
     else
