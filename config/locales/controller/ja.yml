@@ -12,3 +12,8 @@ ja:
   sessions:
     create:
       login_error: 'メールアドレスが無効　または　パスワードが間違っています'
+      
+  account_activations:
+    edit:
+      account_activation_successful: 'アカウントが有効になりました！'
+      invalid_activation_link: '有効化のアドレスが無効です'
