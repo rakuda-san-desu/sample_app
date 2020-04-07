@@ -5,6 +5,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   #fixtureのユーザーを読み込む
   def setup
     @user = users(:michael)
+    @non_activated_user = users(:non_activated)
   end
 
   test "login with invalid information" do

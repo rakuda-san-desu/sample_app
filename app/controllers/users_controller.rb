@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def index
     # インスタンス変数@usersに以下を代入
     # Userテーブルからactivated:がtrueのデータをすべて取り出してpaginate(page: params[:page])する
-    @users = User.where(activated: true).paginate(page: params[:page])  #インスタンス変数@usersにすべてのuserを代入してたけどページネーション機能を実装するため変更
+    @users = User.where(activated: true).paginate(page: params[:page])  
+    #インスタンス変数@usersにすべてのuserを代入してたけどページネーション機能を実装するため変更
     # @users = User.all
     # インスタンス変数@usersにUser.paginate(page: params[:page])を代入
     @users = User.paginate(page: params[:page])

@@ -6,14 +6,14 @@ gem 'faker',          '1.7.3'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.4.1'
-gem 'puma',         '3.12.3'
+gem 'puma',         '3.12.4'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.8"
 gem 'rails-i18n'
 
 group :development, :test do
@@ -32,7 +32,7 @@ group :test do
   gem 'rails-controller-testing', '1.0.2'
   gem 'minitest',                 '5.10.3'
   gem 'minitest-reporters',       '1.1.14'
-  gem 'guard',                    '2.13.0'
+  gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.4'
 end
 
