@@ -5,6 +5,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   #fixtureのユーザーを読み込む
   def setup
     @user = users(:michael)
+    @non_activated_user = users(:non_activated)
   end
 
   test "login with invalid information" do
@@ -27,7 +28,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with valid information followed by logout" do
     #login_pathにgetのリクエスト
     get login_path
-    #login_pathにposuのリクエスト　内容→params: { session: { email: @user.email, password: 'password' } }
+    #login_pathにpostのリクエスト　内容→params: { session: { email: @user.email, password: 'password' } }
     post login_path, params: { session: { email:    @user.email,
                                           password: 'password' } }
     #テストユーザーがログインしている(test_helper.rbのis_logged_in?メソッド)

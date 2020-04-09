@@ -2,6 +2,7 @@ ja:
   users:
     please_log_in: 'ログインしてください'
     create:
+      check_your_email: 'メールを確認してアカウントを有効にしてください。'
       welcome_message: 'サンプルアプリへようこそ！'
     update:
       profile_updated: 'プロフィールが更新されました！'
@@ -11,3 +12,10 @@ ja:
   sessions:
     create:
       login_error: 'メールアドレスが無効　または　パスワードが間違っています'
+      account_not_activated: 'アカウントが有効になっていません '
+      check_your_email: 'メール本文のリンクを確認してください'
+      
+  account_activations:
+    edit:
+      account_activation_successful: 'アカウントが有効になりました！'
+      invalid_activation_link: '有効化のアドレスが無効です'
