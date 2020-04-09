@@ -5,3 +5,4 @@ ja:
       new_user?: '未登録の方はこちらから→'
       signup: '新規登録'
       remember_me_checkbox: 'cookieにログイン情報を保存する'
+      forgot_password: '（パスワードを忘れた方はこちらへ）'
