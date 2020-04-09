@@ -1,0 +1,5 @@
+ja:
+  password_resets:
+    new:
+      forgot_password?: 'パスワードをお忘れですか？'
+      reset: '再設定用メールを送信する'
