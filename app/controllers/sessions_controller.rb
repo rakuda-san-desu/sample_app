@@ -6,13 +6,20 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
-      #session[:user_id] = @user　と言う事
-      log_in @user
-      #params[:session][:remember_me]が1の時@userを記憶　そうでなければuserを忘れる
-      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      #SessionsHelperで定義したredirect_back_orメソッドを呼び出してリダイレクト先を定義
-      # 本文ではデフォルト値が「user」になってるけど「@user」が正解
-      redirect_back_or @user
+      # userが有効であれば
+      if @user.activated?
+        #session[:user_id] = @user　と言う事
+        log_in @user
+        # params[:session][:remember_me]が1の時@userを記憶　そうでなければuserを忘れる
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+        #SessionsHelperで定義したredirect_back_orメソッドを呼び出してリダイレクト先を定義
+        redirect_back_or @user
+      else
+        message  = t('.account_not_activated')
+        message += t('.check_your_email')
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
       flash.now[:danger] = t('.login_error')
       render 'new'
