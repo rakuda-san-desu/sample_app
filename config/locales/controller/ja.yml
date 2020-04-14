@@ -19,3 +19,8 @@ ja:
     edit:
       account_activation_successful: 'アカウントが有効になりました！'
       invalid_activation_link: '有効化のアドレスが無効です'
+
+  password_resets:
+    create:
+      sent_password_reset: 'パスワードのリセット手順を記載したメールを送信しました'
+      emailaddress_not_found: 'メールアドレスが見つかりません'
