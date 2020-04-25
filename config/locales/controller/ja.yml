@@ -22,5 +22,5 @@ ja:
 
   password_resets:
     create:
-      sent_password_reset: 'パスワードのリセット手順を記載したメールを送信しました'
+      send_password_reset: 'パスワードのリセット手順を記載したメールを送信しました'
       emailaddress_not_found: 'メールアドレスが見つかりません'

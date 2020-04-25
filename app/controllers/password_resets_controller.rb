@@ -1,4 +1,8 @@
 class PasswordResetsController < ApplicationController
+  # フィルタの内容は下部private以下
+  before_action :get_user,   only: [:edit, :update]
+  before_action :valid_user, only: [:edit, :update]
+  
   def new
   end
 
@@ -12,7 +16,7 @@ class PasswordResetsController < ApplicationController
       # @userにパスワード再設定メールを送る（send_password_reset_emailはapp/models/user.rbにある）
       @user.send_password_reset_email
       # （インフォで）flashメッセージを表示
-      flash[:info] = t('.send_password_reset_email')
+      flash[:info] = t('.send_password_reset')
       # rootにリダイレクト
       redirect_to root_url
     # （@userが）存在しなければ
@@ -26,4 +30,21 @@ class PasswordResetsController < ApplicationController
 
   def edit
   end
+  
+    private
+
+    # @userに代入　→params[:email]のメールアドレスに対応するユーザー
+    def get_user
+      @user = User.find_by(email: params[:email])
+    end
+
+    # 正しいユーザーかどうか確認する
+    def valid_user
+      # 条件がfalseの場合（@userが存在する　かつ　@userが有効化されている　かつ　@userが認証済である）
+      unless (@user && @user.activated? &&
+              @user.authenticated?(:reset, params[:id]))
+        # root_urlにリダイレクト
+        redirect_to root_url
+      end
+    end
 end
