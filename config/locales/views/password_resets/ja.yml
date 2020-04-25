@@ -3,3 +3,7 @@ ja:
     new:
       forgot_password?: 'パスワードをお忘れですか？'
       reset: '再設定用メールを送信する'
+      
+    edit:
+      reset_password_title: 'パスワードの再設定'
+      reset_pass: 'パスワードを再設定する'
