@@ -71,7 +71,9 @@ class UsersController < ApplicationController
   
   # 外部に公開されないメソッド
   private
-
+    #:user必須
+    #名前、メールアドレス、パスワード、パスワードの確認の属性をそれぞれ許可
+    #それ以外は許可しない
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
