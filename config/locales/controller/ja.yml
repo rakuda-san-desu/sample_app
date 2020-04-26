@@ -24,3 +24,6 @@ ja:
     create:
       send_password_reset: 'パスワードのリセット手順を記載したメールを送信しました'
       emailaddress_not_found: 'メールアドレスが見つかりません'
+    update:
+      password_has_been_reset: 'パスワードがリセットされました'
+      password_reset_has_expired: 'パスワードリセットの有効期限が切れています'

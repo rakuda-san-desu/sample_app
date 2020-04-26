@@ -45,7 +45,7 @@ class PasswordResetsController < ApplicationController
       # @userとしてログイン
       log_in @user
       # 成功のフラッシュメッセージを表示
-      flash[:success] = "Password has been reset."
+      flash[:success] = t('.password_has_been_reset')
       # ユーザー詳細ページにリダイレクト
       redirect_to @user
     else
@@ -85,7 +85,7 @@ class PasswordResetsController < ApplicationController
       # password_reset_expired→期限切れかどうかを確認するインスタンスメソッド→詳しくは後程
       if @user.password_reset_expired?
         # 再設定の有効期限切れなflashメッセージ
-        flash[:danger] = "Password reset has expired."
+        flash[:danger] = t('.password_reset_has_expired')
         # new_password_reset_urlにリダイレクト
         redirect_to new_password_reset_url
       end
