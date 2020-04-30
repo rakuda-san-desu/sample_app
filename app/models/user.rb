@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  #仮想の属性:remember_token、activation_tokenをUserクラスに定義
-  attr_accessor :remember_token, :activation_token
+  #仮想の属性:remember_token、:activation_token、:reset_tokenをUserクラスに定義
+  attr_accessor :remember_token, :activation_token, :reset_token
   #保存の直前に参照するメソッド
   before_save   :downcase_email
   # データ作成の直前に参照するメソッド
@@ -60,6 +60,27 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
   
+  # パスワード再設定の属性を設定する
+  def create_reset_digest
+    # （呼び出し先で考えると）@userのreset_tokenに代入→User.new_token
+    self.reset_token = User.new_token
+    # :reset_digestの値をUser.digest(reset_token)で上書き保存
+    update_attribute(:reset_digest, User.digest(reset_token))
+    # :reset_sent_atの値をTime.zone.nowで上書き保存
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # パスワード再設定のメールを送信する
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+  
+  # パスワード再設定の期限が切れている場合はtrueを返す
+  def password_reset_expired?
+    # reset_sent_atの値（再設定メールの送信時刻）　右辺より早い時刻　2時間前
+    reset_sent_at < 2.hours.ago
+  end
+
     private
 
     # メールアドレスをすべて小文字にする

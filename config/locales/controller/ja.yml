@@ -19,3 +19,11 @@ ja:
     edit:
       account_activation_successful: 'アカウントが有効になりました！'
       invalid_activation_link: '有効化のアドレスが無効です'
+
+  password_resets:
+    create:
+      send_password_reset: 'パスワードのリセット手順を記載したメールを送信しました'
+      emailaddress_not_found: 'メールアドレスが見つかりません'
+    update:
+      password_has_been_reset: 'パスワードがリセットされました'
+      password_reset_has_expired: 'パスワードリセットの有効期限が切れています'

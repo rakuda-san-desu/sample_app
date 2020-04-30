@@ -2,6 +2,12 @@ ja:
   user_mailer:
     hi: 'こんにちは！%{user_name}さん'
     welcome_message: 'サンプルアプリへようこそ！アカウントを有効にするには、下記へアクセスしてください'
+    click_the_link: 'パスワードをリセットするには、以下へアクセスしてください'
+    expire_in_two_hours: 'このリンクは2時間で期限切れになります。'
+    ignore_this_email: 'パスワードの再設定をリクエストしていない場合は、このメールは無視してください（パスワードは変更されません）' 
     
     account_activation:
       activate: 'ここからアクセス'
+      
+    password_reset:
+      reset_msg: 'パスワードの再設定'

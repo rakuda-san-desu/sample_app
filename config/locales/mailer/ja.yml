@@ -1,3 +1,4 @@
 ja:
   user_mailer:
     account_activation_title: 'Sample App アカウント認証メール'
+    password_reset_title: 'Sample App アカウント再設定メール'
