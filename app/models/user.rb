@@ -51,7 +51,7 @@ class User < ApplicationRecord
   
   # アカウントを有効にする
   def activate
-    #
+    #指定のカラムを指定の値に、DBに直接上書き保存
     update_columns(activated: true, activated_at: Time.zone.now)
   end
 
@@ -64,10 +64,8 @@ class User < ApplicationRecord
   def create_reset_digest
     # （呼び出し先で考えると）@userのreset_tokenに代入→User.new_token
     self.reset_token = User.new_token
-    # :reset_digestの値をUser.digest(reset_token)で上書き保存
-    update_attribute(:reset_digest, User.digest(reset_token))
-    # :reset_sent_atの値をTime.zone.nowで上書き保存
-    update_attribute(:reset_sent_at, Time.zone.now)
+    # 指定のカラムを指定の値に、DBに直接上書き保存
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 
   # パスワード再設定のメールを送信する
