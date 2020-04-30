@@ -44,6 +44,8 @@ class PasswordResetsController < ApplicationController
     elsif @user.update_attributes(user_params)
       # @userとしてログイン
       log_in @user
+      # @userの:reset_digestの値をnilに更新して保存
+      @user.update_attribute(:reset_digest, nil)
       # 成功のフラッシュメッセージを表示
       flash[:success] = t('.password_has_been_reset')
       # ユーザー詳細ページにリダイレクト

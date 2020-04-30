@@ -80,9 +80,35 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
                             password_confirmation: "foobaz" } }
     # trueである　テストユーザーがログイン（test_helper.rbからメソッドの呼び出し）
     assert is_logged_in?
+    # nilであればture → 再取得したuserのreset_digest
+    assert_nil user.reload.reset_digest
     # falseである　flashがemptyである
     assert_not flash.empty?
     # userの詳細ページにリダイレクトされる
     assert_redirected_to user
+  end
+  
+  test "expired token" do
+    # new_password_reset_path(password_resets#new)へgetのリクエスト
+    get new_password_reset_path
+    # password_resets_pathにpostのリクエスト　有効なemailの値
+    post password_resets_path,
+         params: { password_reset: { email: @user.email } }
+    # @userに@userを代入（通常統合テストからはアクセスできないattr_accessorで定義した属性の値にもアクセスできるようになる）
+    @user = assigns(:user)
+    # @userのreset_sent_atを3時間前に上書き
+    @user.update_attribute(:reset_sent_at, 3.hours.ago)
+    # @user.reset_tokenを引数に持ったpassword_reset_pathにpacthのリクエスト
+    # @user.emailと有効なパスワードとパスワード確認
+    patch password_reset_path(@user.reset_token),
+          params: { email: @user.email,
+                    user: { password:              "foobar",
+                            password_confirmation: "foobar" } }
+    # レスポンスは以下になるはず　→　リダイレクト
+    assert_response :redirect
+    #　POSTの送信結果に沿って指定されたリダイレクト先に移動
+    follow_redirect!
+    # リダイレクトされたページに'有効期限が切れています'が含まれている
+    assert_match '有効期限が切れています', response.body
   end
 end
