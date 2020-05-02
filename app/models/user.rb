@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # UserとそのMicropostは has_many (1対多) の関係性がある
+  has_many :microposts
   #仮想の属性:remember_token、:activation_token、:reset_tokenをUserクラスに定義
   attr_accessor :remember_token, :activation_token, :reset_token
   #保存の直前に参照するメソッド

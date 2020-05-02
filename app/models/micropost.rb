@@ -1,4 +1,5 @@
 class Micropost < ApplicationRecord
+  # MicropostとそのUserは belongs_to (1対1) の関係性がある
   belongs_to :user
   # user_idが存在する
   validates :user_id, presence: true
