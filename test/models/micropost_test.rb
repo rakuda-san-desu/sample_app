@@ -34,4 +34,9 @@ class MicropostTest < ActiveSupport::TestCase
     # falseである→　@micropostは有効か
     assert_not @micropost.valid?
   end
+  
+  test "order should be most recent first" do
+    # 第一引数と第二引数が等しい　microposts（fixture）の:most_recent　と　Micropostオブジェクトの1つ目
+    assert_equal microposts(:most_recent), Micropost.first
+  end
 end
