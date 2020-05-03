@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # UserとそのMicropostは has_many (1対多) の関係性がある
-  has_many :microposts
+  # （ユーザーが削除された時）紐づいているマイクロポストも削除される
+  has_many :microposts, dependent: :destroy
   #仮想の属性:remember_token、:activation_token、:reset_tokenをUserクラスに定義
   attr_accessor :remember_token, :activation_token, :reset_token
   #保存の直前に参照するメソッド
