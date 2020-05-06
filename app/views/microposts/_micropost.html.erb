@@ -1,0 +1,13 @@
+<!--CSSのidにマイクロポストのidを割り振っている　一般的に良いとされる慣習との事-->
+<li id="micropost-<%= micropost.id %>">
+  <!--gravatarからユーザの画像を呼び出して表示＆ユーザー詳細へリンク-->
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <span class="content"><%= micropost.content %></span>
+  <span class="timestamp">
+    <!--〇〇分前に投稿的な文字列を出してくれるヘルパーメソッド-->
+    <!--Posted <%= time_ago_in_words(micropost.created_at) %> ago.-->
+    <!--上記を取り入れて日本語化アレンジ-->
+    <%= t('.posted', time_ago: time_ago_in_words(micropost.created_at) ) %>
+  </span>
+</li>

@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   def show
     # @userにUserテーブルから(params[:id])のデータを取り出して代入
     @user = User.find(params[:id])
+    # @micropostに　@userのmicropostsをpaginate(page: params[:page])して代入
+    @microposts = @user.microposts.paginate(page: params[:page])
     #root_urlにリダイレクト　trueの場合ここで処理が終了する→　@userが有効ではない場合
     #false(@userが有効）な場合はリダイレクトは実行されない
     redirect_to root_url and return unless @user.activated?

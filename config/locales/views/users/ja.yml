@@ -11,3 +11,5 @@ ja:
     user:
       delete: '削除'
       confirmation: 'このユーザーを削除しますか？'
+    show:
+      microposts: '投稿数→（%{microposts_count}）'

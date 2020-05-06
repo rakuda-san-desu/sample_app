@@ -4,6 +4,8 @@ class MicropostTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:michael)
+    # このコードは慣習的に正しくない
+    # @micropost = Micropost.new(content: "Lorem ipsum", user_id: @user.id)
     # @micropostに以下を代入
     # @userに紐づいたMicropostオブジェクトを返す（content属性に"Lorem ipsum"の値を持つ）
     @micropost = @user.microposts.build(content: "Lorem ipsum")
@@ -33,6 +35,12 @@ class MicropostTest < ActiveSupport::TestCase
     @micropost.content = "a" * 141
     # falseである→　@micropostは有効か
     assert_not @micropost.valid?
+    # 140文字の時有効
+    @micropost.content = "a" * 140
+    assert @micropost.valid?
+    # 139文字の時有効
+    @micropost.content = "a" * 139
+    assert @micropost.valid?
   end
   
   test "order should be most recent first" do

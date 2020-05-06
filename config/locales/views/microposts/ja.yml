@@ -1,0 +1,4 @@
+ja:
+  microposts:
+    micropost:
+      posted: '投稿日時　%{time_ago}前'
