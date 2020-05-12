@@ -9,3 +9,5 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
+      micropost:
+        content: 投稿内容

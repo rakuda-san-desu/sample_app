@@ -2,3 +2,10 @@ ja:
   shared:
     error_messages:
       errors count: 'フォームに%{errors_count}個のエラーがあります'
+    micropost_form:
+      content_msg: '本文を入力してください'
+      post_btn: '投稿する'
+    user_info: 
+      user_prf: 'ユーザープロフィールを見る'
+      mc_count: '%{user_microposts_count}個の投稿があります'
+      

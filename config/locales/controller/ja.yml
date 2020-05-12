@@ -27,3 +27,7 @@ ja:
     update:
       password_has_been_reset: 'パスワードがリセットされました'
       password_reset_has_expired: 'パスワードリセットの有効期限が切れています'
+      
+  microposts:
+    create:
+      micropost_created: '投稿されました！'

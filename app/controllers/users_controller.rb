@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # 直前にlogged_in_userメソッドを実行　index,edit,updateアクションにのみ適用
+  # 直前にlogged_in_userメソッド（ApplicationController）を実行　index,edit,updateアクションにのみ適用
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   # 直前にcorrect_userメソッドを実行　edit,updateアクションにのみ適用
   before_action :correct_user,   only: [:edit, :update]
