@@ -13,6 +13,8 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     # 保存できなければ
     else
+      # エラー回避
+      @feed_items = []
       # static_pages/homeを描画
       render 'static_pages/home'
     end

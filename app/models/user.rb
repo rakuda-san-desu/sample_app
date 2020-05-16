@@ -81,6 +81,13 @@ class User < ApplicationRecord
     # reset_sent_atの値（再設定メールの送信時刻）　右辺より早い時刻　2時間前
     reset_sent_at < 2.hours.ago
   end
+  
+  # 試作feedの定義
+  # 完全な実装は次章の「ユーザーをフォローする」を参照
+  def feed
+    # Micropostテーブルからuser_idがidのユーザーをすべて取得
+    Micropost.where("user_id = ?", id)
+  end
 
     private
 

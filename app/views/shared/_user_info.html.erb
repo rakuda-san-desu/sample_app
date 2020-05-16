@@ -1,0 +1,5 @@
+<!--サイドバーのユーザー情報部分-->
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<h1><%= current_user.name %></h1>
+<span><%= link_to t('.user_prf'), current_user %></span>
+<span><%= t('.mc_count', user_microposts_count: current_user.microposts.count) %></span>
