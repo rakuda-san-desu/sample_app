@@ -28,6 +28,7 @@ class MicropostsController < ApplicationController
     flash[:success] = t('.micropost_deleted')
     # # リダイレクト　（request.referrerで返される）一つ前のURL　もしくはroot_url
     # redirect_to request.referrer || root_url
+    # 直前に実行したアクションへリダイレクト　（引数のfallback_locationオプションで例外エラーが発生した際のリダイレクト先にroot_urlを指定）
     redirect_back(fallback_location: root_url)
   end
   
