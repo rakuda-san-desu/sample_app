@@ -2,3 +2,5 @@ ja:
   microposts:
     micropost:
       posted: '投稿日時　%{time_ago}前'
+      delete: '削除'
+      sure: '削除しますか？'

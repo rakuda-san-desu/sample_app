@@ -1,6 +1,9 @@
 class MicropostsController < ApplicationController
   # 直前にlogged_in_userメソッド（ApplicationController）を実行　:create, :destroyアクションにのみ適用
   before_action :logged_in_user, only: [:create, :destroy]
+  # 直前にcorrect_userメソッドを実行　destroyアクションにのみ適用
+  before_action :correct_user,   only: :destroy
+
   
   def create
     # @micropostに　ログイン中のユーザーに紐付いた新しいマイクロポストオブジェクトを返す（引数　micropost_params）
@@ -21,6 +24,11 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
+    @micropost.destroy
+    flash[:success] = t('.micropost_deleted')
+    # # リダイレクト　（request.referrerで返される）一つ前のURL　もしくはroot_url
+    # redirect_to request.referrer || root_url
+    redirect_back(fallback_location: root_url)
   end
   
   private
@@ -28,5 +36,12 @@ class MicropostsController < ApplicationController
     def micropost_params
       # micropost属性必須　content属性のみ変更を許可
       params.require(:micropost).permit(:content)
+    end
+    
+    def correct_user
+      # @microposutに代入　current_userのmicropostsからparams[:id]を持つmicropostを取得
+      @micropost = current_user.microposts.find_by(id: params[:id])
+      # root_urlにredirect　もし@micropostがnilなら
+      redirect_to root_url if @micropost.nil?
     end
 end

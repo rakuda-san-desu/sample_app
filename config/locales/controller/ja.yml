@@ -31,3 +31,5 @@ ja:
   microposts:
     create:
       micropost_created: '投稿されました！'
+    destroy:
+      micropost_deleted: '投稿は削除されました'
