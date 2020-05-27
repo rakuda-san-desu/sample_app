@@ -86,15 +86,29 @@ class UsersController < ApplicationController
     # ログイン済みユーザーかどうか確認
     def logged_in_user
       # logged_in?がfalseの場合
-      unless logged_in?
-        # SessionsHelperメソッド　store_locationの呼び出し
-        store_location
+      # unless logged_in?
+        # # SessionsHelperメソッド　store_locationの呼び出し
+        # store_location
         # flashsでエラーメッセージを表示
-        flash[:danger] = t('users.please_log_in')
+        flash[:danger] = "test"
         # login_urlにリダイレクト
-        redirect_to login_url
-      end
+        redirect_to about_url
+      # end
     end
+    
+    # ApplicationsControllerに移動したため削除
+    # # ログイン済みユーザーかどうか確認
+    # def logged_in_user
+    #   # logged_in?がfalseの場合
+    #   unless logged_in?
+    #     # SessionsHelperメソッド　store_locationの呼び出し
+    #     store_location
+    #     # flashsでエラーメッセージを表示
+    #     flash[:danger] = t('.please_log_in')
+    #     # login_urlにリダイレクト
+    #     redirect_to login_url
+    #   end
+    # end
     
     # 正しいユーザーかどうか確認
     def correct_user
