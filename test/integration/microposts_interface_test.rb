@@ -14,12 +14,12 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     get root_path
     # 特定のHTMLタグが存在する→ class = "pagination"を持つdiv
     assert_select 'div.pagination'
-    # ブロックで渡されたものを呼び出す前後でMicropost.countに違いがな
+    # ブロックで渡されたものを呼び出す前後でMicropost.countに違いがない
     assert_no_difference 'Micropost.count' do
       # microposts_pathにpostのリクエスト　→　micropost: { content: "" }（無効なデータ）
       post microposts_path, params: { micropost: { content: "" } }
     end
-    # 特定のHTMLタグが存在する→　id = "error_explanation"を持つidv
+    # 特定のHTMLタグが存在する→　id = "error_explanation"を持つdiv
     assert_select 'div#error_explanation'
     # contentに代入　→　"This micropost really ties the room together"
     content = "This micropost really ties the room together"
