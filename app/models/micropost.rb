@@ -3,6 +3,8 @@ class Micropost < ApplicationRecord
   belongs_to :user
   # default_scope（順序を指定するメソッド） created_at:を降順にする
   default_scope -> { order(created_at: :desc) }
+  # mount_uploader（CarrierWaveへ画像と関連付けたモデルを伝えるメソッド）画像のファイル名の格納先の属性名、,アップローダーのクラス名
+  mount_uploader :picture, PictureUploader
   # user_idが存在する
   validates :user_id, presence: true
   # contentが存在する　長さは最大140文字
