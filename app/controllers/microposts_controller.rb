@@ -35,8 +35,8 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      # micropost属性必須　content属性のみ変更を許可
-      params.require(:micropost).permit(:content)
+      # micropost属性必須　content属性:pictureと属性のみ変更を許可
+      params.require(:micropost).permit(:content, :picture)
     end
     
     def correct_user

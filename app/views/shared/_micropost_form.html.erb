@@ -5,4 +5,7 @@
     <%= f.text_area :content, placeholder: t('.content_msg') %>
   </div>
   <%= f.submit t('.post_btn'), class: "btn btn-primary" %>
+  <span class="picture">
+    <%= f.file_field :picture %>
+  </span>
 <% end %>
