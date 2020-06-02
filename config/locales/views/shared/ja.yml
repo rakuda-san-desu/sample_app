@@ -8,4 +8,3 @@ ja:
     user_info: 
       user_prf: 'ユーザープロフィールを見る'
       mc_count: '%{user_microposts_count}個の投稿があります'
-      

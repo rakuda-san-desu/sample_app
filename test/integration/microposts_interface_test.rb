@@ -14,6 +14,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     get root_path
     # 特定のHTMLタグが存在する→ class = "pagination"を持つdiv
     assert_select 'div.pagination'
+    # 特定のHTMLタグが存在する→ type="file"を持つinput
     assert_select 'input[type="file"]'
     # ブロックで渡されたものを呼び出す前後でMicropost.countに違いがない
     assert_no_difference 'Micropost.count' do
@@ -24,6 +25,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     # contentに代入　→　"This micropost really ties the room together"
     content = "This micropost really ties the room together"
+    # pictureに代入→ fixtureで定義されたファイルをアップロードするメソッド（パス, タイプ）
     picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
     # ブロックで渡されたものを呼び出す前後でMicropost.countが+1
     assert_difference 'Micropost.count', 1 do

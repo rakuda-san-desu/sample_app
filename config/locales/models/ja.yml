@@ -11,3 +11,8 @@ ja:
         password_confirmation: パスワード（確認用）
       micropost:
         content: 投稿内容
+        picture: 画像
+  errors:
+    messages:
+      less_than_5mb: は5MBより小さいファイルを選択してください
+      extension_whitelist_error: ファイルを選択してください（拡張子が異なっています）

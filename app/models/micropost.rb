@@ -9,4 +9,16 @@ class Micropost < ApplicationRecord
   validates :user_id, presence: true
   # contentが存在する　長さは最大140文字
   validates :content, presence: true, length: { maximum: 140 }
+  # 独自のバリデーションを定義するためvalidatesではなくvalidateメソッドを使っている
+  # 引数にシンボルを取り、シンボル名に対応したメソッド（picture_size）を呼び出す
+  validate  :picture_size
+
+  private
+
+    # アップロードされた画像のサイズをバリデーションする
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, :less_than_5mb)
+      end
+    end
 end

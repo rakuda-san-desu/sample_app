@@ -6,6 +6,21 @@
   </div>
   <%= f.submit t('.post_btn'), class: "btn btn-primary" %>
   <span class="picture">
-    <%= f.file_field :picture %>
+    <!--acceptパラメータを使って許可したファイル形式をMIMEタイプで指定-->
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>
 <% end %>
+
+<!--jQueryでファイル合図の警告を出す-->
+<script type="text/javascript">
+  // id = "micropost_picture"を持つ要素の値が変更された時に実行
+  $('#micropost_picture').bind('change', function() {
+    // size_in_megabytesに代入→このファイルのサイズを取得してMBに換算（size/1024/1024）
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    // size_in_megabytesが5より大きい時
+    if (size_in_megabytes > 5) {
+      // アラートを出す
+      alert('5MBより大きな画像はアップロードできません');
+    }
+  });
+</script>
