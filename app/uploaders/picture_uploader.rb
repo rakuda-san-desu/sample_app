@@ -5,6 +5,13 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   # 縦横どちらかが400pxを超えていた場合、適切なサイズに縮小するオプション
   process resize_to_limit: [400, 400]
+  
+  # 本番環境かそれ以外かで保存先を切り替え
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
   # Choose what kind of storage to use for this uploader:
   storage :file
