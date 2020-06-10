@@ -1,7 +1,12 @@
 class User < ApplicationRecord
-  # UserとそのMicropostは has_many (1対多) の関係性がある
+  # UserとMicropostは has_many (1対多) の関係性がある
   # （ユーザーが削除された時）紐づいているマイクロポストも削除される
   has_many :microposts, dependent: :destroy
+  # Userモデルと:active_relationshipsはhas_many (1対多) の関係性がある
+  # クラスはRelationship、外部キーはfollower_id、（ユーザーが削除された時）紐づいているactive_relationshipsも削除される
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
   #仮想の属性:remember_token、:activation_token、:reset_tokenをUserクラスに定義
   attr_accessor :remember_token, :activation_token, :reset_token
   #保存の直前に参照するメソッド
