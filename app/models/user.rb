@@ -7,9 +7,17 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
+  # Userモデルと:passive_relationshipsはhas_many (1対多) の関係性がある
+  # クラスはRelationship、外部キーはfollowed_id、（ユーザーが削除された時）紐づいているpassive_relationshipsも削除される
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
   # Userとfollowingはactive_relationshipsを介して多対多の関係を持っている
   # 関連付け（following）元の名前はfollowed
   has_many :following, through: :active_relationships, source: :followed
+  # Userとfollowingはpassive_relationshipsを介して多対多の関係を持っている
+  # 関連付け（following）元の名前はfollower　←source: :followerは省略可能
+  has_many :followers, through: :passive_relationships, source: :follower
   #仮想の属性:remember_token、:activation_token、:reset_tokenをUserクラスに定義
   attr_accessor :remember_token, :activation_token, :reset_token
   #保存の直前に参照するメソッド
