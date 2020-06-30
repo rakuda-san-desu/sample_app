@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  # 直前にlogged_in_userメソッド（ApplicationController）を実行　index,edit,updateアクションにのみ適用
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  # 直前にlogged_in_userメソッド（ApplicationController）を実行　index,edit,update,following,followersアクションにのみ適用
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                         :following, :followers]
   # 直前にcorrect_userメソッドを実行　edit,updateアクションにのみ適用
   before_action :correct_user,   only: [:edit, :update]
   # 直前にadmin_userメソッドを実行　destroyアクションのみに適用
@@ -69,6 +70,24 @@ class UsersController < ApplicationController
     flash[:success] = t('.user_deleted')
     # ユーザー一覧ページへリダイレクト
     redirect_to users_url
+  end
+  
+  def following
+    @title = t('.following_title')
+    # @userにDBから取得したparams[:id]のuserを代入
+    @user  = User.find(params[:id])
+    # @usersに@user.followingのページネーションを代入
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = t('.followers_title')
+    # @userにDBから取得したparams[:id]のuserを代入
+    @user  = User.find(params[:id])
+    # @usersに@user.followersのページネーションを代入
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
   
   # 外部に公開されないメソッド
