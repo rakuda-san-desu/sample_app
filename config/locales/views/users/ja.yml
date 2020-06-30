@@ -13,3 +13,7 @@ ja:
       confirmation: 'このユーザーを削除しますか？'
     show:
       microposts: '投稿数→（%{microposts_count}）'
+    follow:
+      follow_btn: 'フォローする'
+    unfollow:
+      unfollow_btn: 'フォローを解除する'
