@@ -98,11 +98,10 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
-  # 試作feedの定義
-  # 完全な実装は次章の「ユーザーをフォローする」を参照
+  # feedの定義
   def feed
-    # Micropostテーブルからuser_idがidのユーザーをすべて取得
-    Micropost.where("user_id = ?", id)
+    # Micropostテーブルから取得　条件→user_idにフォローしているユーザーのidか現在のユーザーのidを持つもの
+    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
   end
 
   # ユーザーをフォローする

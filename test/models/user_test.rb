@@ -124,7 +124,7 @@ class UserTest < ActiveSupport::TestCase
       # michaelのfeedにpost_selfが含まれている
       assert michael.feed.include?(post_self)
     end
-    # ローしていないユーザーの投稿を確認
+    # フォローしていないユーザーの投稿を確認
     # archerのmicropostsを順に取り出してpost_unfollowedに代入
     archer.microposts.each do |post_unfollowed|
       # michaelのfeedにpost_unfollowedが含まれていない
