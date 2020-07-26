@@ -100,8 +100,10 @@ class User < ApplicationRecord
   
   # feedの定義
   def feed
-    # Micropostテーブルから取得　条件→user_idにフォローしているユーザーのidか現在のユーザーのidを持つもの
-    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
+    following_ids = "SELECT followed_id FROM relationships
+                    WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
   end
 
   # ユーザーをフォローする
