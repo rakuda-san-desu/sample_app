@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
-      microposts: 投稿
+      micropost: 投稿
     attributes:
       user:
         name: 名前

@@ -8,6 +8,10 @@ ja:
       profile_updated: 'プロフィールが更新されました！'
     destroy:
       user_deleted: 'ユーザーが削除されました'
+    following:
+      following_title: 'フォロー中'
+    followers:
+      followers_title: 'フォロワー'
   
   sessions:
     create:
@@ -33,3 +37,4 @@ ja:
       micropost_created: '投稿されました！'
     destroy:
       micropost_deleted: '投稿は削除されました'
+      
