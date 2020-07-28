@@ -75,4 +75,14 @@ class FollowingTest < ActionDispatch::IntegrationTest
       delete relationship_path(relationship), xhr: true
     end
   end
+  
+  test "feed on Home page" do
+    # root_pathにgetのリクエスト
+    get root_path
+    # @userのfeedのページネートの1ページ目から配列をひとつづつ取り出してmicropostに代入
+    @user.feed.paginate(page: 1).each do |micropost|
+      # response.bodyに特殊文字をエスケープしたmicropost.contentが含まれている
+      assert_match CGI.escapeHTML(micropost.content), response.body
+    end
+  end
 end
