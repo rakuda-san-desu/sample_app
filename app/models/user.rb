@@ -100,7 +100,7 @@ class User < ApplicationRecord
   
   # feedの定義
   def feed
-    Micropost.where(user_id: active_relationships.select(:followed_id))
+    Micropost.where(user: following)
              .or(Micropost.where(user_id: id))
   end
 
